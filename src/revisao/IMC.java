@@ -5,6 +5,8 @@
  */
 package revisao;
 
+import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -37,15 +39,27 @@ public class IMC {
         
         
         System.out.println("");
-        System.out.println("Resultado com IF");
+        System.out.println("Resultado com IF com formatação na saída");
         if (imc < 18.5) {
-            System.out.println(nome + " seu IMC é: " + imc + ", e define Magreza.");
+            System.out.printf(nome + " seu IMC é: %.2f, e define Magreza.", imc);
         } else if (imc <= 24.9) {
-            System.out.println(nome + " seu IMC é: " + imc + ", e define Normal.");
+            System.out.printf(nome + " seu IMC é: %.2f, e define Normal.", imc);
         } else if (imc <= 30) {
-            System.out.println(nome + " seu IMC é: " + imc + ", e define Sobrepeso.");
+            System.out.printf(nome + " seu IMC é: %.2f, e define Sobrepeso.", imc);
         } else {
-            System.out.println(nome + " seu IMC é: " + imc + ", e define Obesidade.");
+            System.out.printf(nome + " seu IMC é: %.2f, e define Obesidade.", imc);
         }
+        System.out.println("");
+        
+        System.out.println("");
+        System.out.println("NumberFormat");
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(2);
+        System.out.println(nf.format(imc));
+        
+        System.out.println("");
+        System.out.println("DecimalFormat");
+        DecimalFormat df = new DecimalFormat("#,###.00");
+        System.out.println(df.format(imc));
    } 
 }
